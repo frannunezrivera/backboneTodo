@@ -9,7 +9,7 @@ backboneTodo.Models = backboneTodo.Models || {};
     	defaults: {
 	        title: '',
 	        completed: false,
-	        category: 0
+	        categories: [] 
 	    },
 	 
 	    toggle: function () {

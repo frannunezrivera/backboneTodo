@@ -8,12 +8,17 @@ window.backboneTodo = {
     Routers: {},
     init: function () {
         'use strict';
-        new this.Views.CategoriesView({
-            collection: new this.Collections.CategoriesCollection()
+
+        backboneTodo.dat = backboneTodo.dat || {};
+        backboneTodo.dat.CategoriesCollection = new this.Collections.CategoriesCollection();
+        backboneTodo.dat.CategoriesView = new this.Views.CategoriesView({
+            collection: backboneTodo.dat.CategoriesCollection
         });
 
-        new this.Views.TodosView({
-            collection: new this.Collections.TodosCollection()
+
+        backboneTodo.dat.TodosCollection = new this.Collections.TodosCollection();
+        backboneTodo.dat.TodosView = new this.Views.TodosView({
+            collection: backboneTodo.dat.TodosCollection
         });
 
     }

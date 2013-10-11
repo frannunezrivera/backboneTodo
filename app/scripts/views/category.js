@@ -27,13 +27,17 @@ backboneTodo.Views = backboneTodo.Views || {};
 	    },
 
 	    toggle : function(){
-	    	this.$el.toggleClass("active");
-	    	debugger;
-	    	var TodosCollection = new backboneTodo.Collections.TodosCollection();
-	    	TodosCollection.where({category: 0});
 	    	
-	    	console.log(TodosCollection.where({category: 0}));
-	    }
+	    	this.model.toggle();
+	    	this.$el.toggleClass("active");
+
+	    	var ActiveCat = backboneTodo.dat.CategoriesCollection.getActiveCategories();
+	    	if (ActiveCat.length){
+	    		backboneTodo.dat.TodosView.addAllTodoItems(backboneTodo.dat.TodosCollection.filterByCategoryIds(ActiveCat));
+	    	}else{
+	    		backboneTodo.dat.TodosCollection.reset(backboneTodo.dat.TodosCollection);
+	    	}
+	    },
 
     });
 

@@ -21,13 +21,7 @@ backboneTodo.Views = backboneTodo.Views || {};
 
 	        this.listenTo(this.collection, 'add', this.addTodoItem);
 	        this.listenTo(this.collection, 'reset', this.addAllTodoItems);
-	        this.listenTo(this.collection, 'sync', this.test);
 	        this.collection.fetch();
-	    },
-
-	    test: function() {
-	    	debugger;
-	    	console.log(this.collection.where({category: 0}));
 	    },
 
 	    render: function () {
@@ -42,8 +36,10 @@ backboneTodo.Views = backboneTodo.Views || {};
 	        var title = this.$('#new-todo').val().trim();
 
 	        if (title) {
+
 	            this.collection.create(new backboneTodo.Models.TodoModel({
-	                title: title
+	                title: title,
+	                categories: backboneTodo.dat.CategoriesCollection.getActiveCategories()
 	            }));
 
 	            $('#new-todo').val('');
@@ -52,12 +48,17 @@ backboneTodo.Views = backboneTodo.Views || {};
 
 	    addTodoItem: function (todo) {
 	        var view = new backboneTodo.Views.TodoView({ model: todo });
-	        this.$('ul').append(view.render().el);
+	        this.$('ul.todos').append(view.render().el);
 	    },
 
-	    addAllTodoItems: function () {
-	        this.collection.each(this.addTodoItem, this);
-
+	    addAllTodoItems: function (filtered) {
+	    	this.render();
+	    	if (filtered instanceof Array && filtered.length){
+	        	_.each(filtered,this.addTodoItem, this);
+	        }else{
+	        	
+	        	this.collection.fetch();
+	        }
 	    }
 
     });

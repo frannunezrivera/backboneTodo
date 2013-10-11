@@ -51,6 +51,7 @@ backboneTodo.Views = backboneTodo.Views || {};
 	        } else {
 	            // Done editing.
 	            this.model.set('title', title);
+
 	            this.model.save();
 
 	            this.render();

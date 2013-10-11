@@ -13,8 +13,16 @@ backboneTodo.Views = backboneTodo.Views || {};
 
 	    initialize: function () {
 	        this.render();
-	        this.listenTo(this.collection, 'sync', this.addAllCategoriesItems);
-	        this.collection.fetch();
+	        this.listenTo(this.collection, 'reset', this.addAllCategoriesItems);
+	        //this.collection.fetch();
+	        
+	        this.collection.reset(
+			    [
+				new backboneTodo.Models.CategoryModel({title:'Personal', "categoryId": 0}),
+			    new backboneTodo.Models.CategoryModel({title:'Work', "categoryId": 1}),
+			    new backboneTodo.Models.CategoryModel({title:'Important', "categoryId": 2}),
+			    new backboneTodo.Models.CategoryModel({title:'Shopping', "categoryId": 3})]
+			);
 	    },
 
 	    render: function () {

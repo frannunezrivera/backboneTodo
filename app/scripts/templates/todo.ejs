@@ -5,3 +5,8 @@
 <span>
     <%= title %>
 </span>
+<ul class="todo-categories">
+	<% _.each(categories, function(category) { %>
+		<li class="category-<%= category %>"><%= category %></span>
+	<% }); %>
+</ul>
