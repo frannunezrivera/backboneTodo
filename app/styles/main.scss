@@ -17,6 +17,10 @@ $workColorActive: rgb(236, 108, 32);
 $importantColorActive: rgb(229, 59, 81);
 $shoppingColorActive: rgb(60, 181, 181);
 
+body {
+    background-color: #0B486B;
+}
+
 .hero-unit {
     margin: 50px auto 0 auto;
     width: 500px;
@@ -53,6 +57,17 @@ li form {
 
 input:checked ~ span {
     text-decoration: line-through;
+}
+
+.clickable:hover {
+    cursor: pointer;
+}
+
+.note {
+    font-size: 0.6em;
+    text-align: right;
+    width: 100%;
+    display: inline-block;
 }
 
 #todo-app,

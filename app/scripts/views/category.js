@@ -8,7 +8,7 @@ backboneTodo.Views = backboneTodo.Views || {};
     backboneTodo.Views.CategoryView = Backbone.View.extend({
 
     	tagName: 'li',
-    	className: '',
+    	className: 'clickable',
 
 	    template: JST['app/scripts/templates/category.ejs'],
 

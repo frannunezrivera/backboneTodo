@@ -1,4 +1,4 @@
-<span class="icon-trash"></span>
+<span class="icon-trash clickable"></span>
 <input type="checkbox" <% if (completed) { %>checked<% } %>>
 <form>
     <input type="text" value="<%= title %>">
@@ -13,6 +13,6 @@
 </ul>
 <ul class="todo-categories-edit hide">
 	<% _.each(categories, function(category) { %>
-		<li class="category-<%= category.name %> active" data-id="<%= category.id %>"><%= category.name %><span class="icon-remove"></span>
+		<li class="category-<%= category.name %> active clickable" data-id="<%= category.id %>"><%= category.name %><span class="icon-remove"></span>
 	<% }); %>
 </ul>
