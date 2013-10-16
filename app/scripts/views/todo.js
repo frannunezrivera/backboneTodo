@@ -13,9 +13,11 @@ backboneTodo.Views = backboneTodo.Views || {};
 
 	    events: {
 	        'click input[type="checkbox"]': 'toggle',
-	        'dblclick span': 'toggleEdit',
-	        'blur input[type="text"]': 'toggleEdit',
-	        'submit form': 'toggleEdit'
+	        'dblclick': 'toggleEdit',
+	        'click form span.icon-remove': 'removeTodo',
+	        'submit form': 'toggleEdit',
+	        'click ul.todo-categories-edit li': 'removeCategory',
+	        'blur input[type="text"]': 'toggleEdit'
 	    },
 
 	    initialize: function () {
@@ -32,17 +34,19 @@ backboneTodo.Views = backboneTodo.Views || {};
 	        this.model.toggle();
 	    },
 
-	    toggleEdit: function () {
+	    toggleEdit: function (e) {
 	        var input = this.$('form input');
 	        var title = input.val().trim();
 
+	        debugger;
 	        if (!title) {
-	            this.model.destroy();
-	            this.remove();
+	            this.removeTodo();
 	            return;
 	        }
 
 	        this.$el.toggleClass('editing');
+	        this.$('.todo-categories').toggleClass('hide');
+	        this.$('.todo-categories-edit').slideToggle();
 
 	        if (title === this.model.get('title')) {
 	            // Edit mode.
@@ -56,6 +60,25 @@ backboneTodo.Views = backboneTodo.Views || {};
 
 	            this.render();
 	        }
+	    },
+
+	    removeCategory: function(e){
+	    	debugger;
+	    	_.each(this.model.get('categories'), function(category, index){
+	    		if (category.id === this.$(e.target).data('id')){
+	    			this.model.get('categories').splice(index,1);
+	    		}
+	    	},this);
+
+	    	this.model.save();
+
+	    	this.render();
+	    },
+
+	    removeTodo: function(){
+	    	this.model.destroy();
+	        this.remove();
+	        this.render();
 	    }
 
     });

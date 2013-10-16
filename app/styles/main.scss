@@ -2,15 +2,30 @@ $iconSpritePath: '/images/glyphicons-halflings.png';
 @import 'sass-bootstrap/lib/bootstrap';
 
 @import 'sass-bootstrap/lib/bootstrap';
- 
+
+//
+// Colors
+//
+  
+$personalColor: rgba(252, 217, 32, 0.5);
+$workColor: rgba(236, 108, 32, 0.5);
+$importantColor: rgba(229, 59, 81, 0.5);
+$shoppingColor: rgba(60, 181, 181, 0.5) ;
+
+$personalColorActive: rgb(252, 217, 32);
+$workColorActive: rgb(236, 108, 32);
+$importantColorActive: rgb(229, 59, 81);
+$shoppingColorActive: rgb(60, 181, 181);
+
 .hero-unit {
     margin: 50px auto 0 auto;
-    width: 300px;
+    width: 500px;
 }
  
 form {
     margin-top: 10px;
 }
+
  
 ul,
 li form {
@@ -27,7 +42,7 @@ li form {
 }
  
 .editing {
-    span {
+    span.title {
         display: none;
     }
  
@@ -35,7 +50,81 @@ li form {
         display: inline-block;
     }
 }
- 
+
 input:checked ~ span {
     text-decoration: line-through;
+}
+
+#todo-app {
+    margin: 0 auto;
+    width: 290px;
+}
+
+ul#categories {   
+    width: 100%;
+    margin-top: 24px;
+
+    li {
+        width: 20%;
+        display: inline-block;
+        margin-right: 5%;
+        font-size: .9em;
+        text-align: center;
+    }
+}
+
+ul.todo-categories-edit {
+    width: 100%;
+    li {
+        margin: 2% 0% 0% 6%;
+        padding: inherit;
+        text-align: center;
+        font-size: .9em;
+        span.icon-remove {
+            display: inline-block;
+            float: right;
+            margin-top: 9px;
+            padding-left: 10px;
+        }
+    }
+}
+
+ul.todo-categories {
+    width: 100px;
+    height: 20px;
+    float: right;
+    li {
+        width: 20px;
+        display: inline-block;
+        margin: 4px;
+        height: 20px;
+    }
+}
+
+.category-Personal{
+    background-color: $personalColor;
+    &.active {
+        background-color: $personalColorActive;
+    }
+}
+
+.category-Work{
+    background-color: $workColor;
+    &.active {
+        background-color: $workColorActive;
+    }
+}
+
+.category-Shopping{
+    background-color: $shoppingColor;
+    &.active {
+        background-color: $shoppingColorActive;
+    }
+}
+
+.category-Important{
+    background-color: $importantColor;
+    &.active {
+        background-color: $importantColorActive;
+    }
 }

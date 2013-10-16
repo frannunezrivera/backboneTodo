@@ -7,8 +7,8 @@ backboneTodo.Views = backboneTodo.Views || {};
 
     backboneTodo.Views.CategoryView = Backbone.View.extend({
 
-    	tagName: 'button',
-    	className: 'btn btn-default',
+    	tagName: 'li',
+    	className: '',
 
 	    template: JST['app/scripts/templates/category.ejs'],
 
@@ -22,6 +22,7 @@ backboneTodo.Views = backboneTodo.Views || {};
 
 	    render: function () {
 	        this.$el.html(this.template(this.model.toJSON()));
+	        this.$el.addClass("category-" + this.model.get('title'));
 
 	        return this;
 	    },
@@ -30,7 +31,7 @@ backboneTodo.Views = backboneTodo.Views || {};
 	    	
 	    	this.model.toggle();
 	    	this.$el.toggleClass("active");
-
+	    	
 	    	var ActiveCat = backboneTodo.dat.CategoriesCollection.getActiveCategories();
 	    	if (ActiveCat.length){
 	    		backboneTodo.dat.TodosView.addAllTodoItems(backboneTodo.dat.TodosCollection.filterByCategoryIds(ActiveCat));

@@ -1,12 +1,18 @@
 <input type="checkbox" <% if (completed) { %>checked<% } %>>
 <form>
     <input type="text" value="<%= title %>">
+    <span class="icon-remove"></span>
 </form>
-<span>
+<span class="title">
     <%= title %>
 </span>
 <ul class="todo-categories">
 	<% _.each(categories, function(category) { %>
-		<li class="category-<%= category %>"><%= category %></span>
+		<li class="category-<%= category.name %> active"></span>
+	<% }); %>
+</ul>
+<ul class="todo-categories-edit hide">
+	<% _.each(categories, function(category) { %>
+		<li class="category-<%= category.name %> active" data-id="<%= category.id %>"><%= category.name %><span class="icon-remove"></span>
 	<% }); %>
 </ul>

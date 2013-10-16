@@ -15,8 +15,13 @@ backboneTodo.Collections = backboneTodo.Collections || {};
     	filterByCategoryIds: function() {
     		var ActiveCat = backboneTodo.dat.CategoriesCollection.getActiveCategories();
 	        var filtered = this.filter(function(todo) {
+                var catIds=[]; 
 
-	            return (_.intersection(todo.get('categories'),ActiveCat).length >= 1); 
+                _.each(todo.get('categories'), function(c){ 
+                    catIds.push(c.id);
+                });
+
+	            return (_.intersection(catIds,ActiveCat).length >= 1); 
 	        });
 
 	        return filtered;

@@ -36,10 +36,18 @@ backboneTodo.Views = backboneTodo.Views || {};
 	        var title = this.$('#new-todo').val().trim();
 
 	        if (title) {
+	        	var categories = _.map(backboneTodo.dat.CategoriesCollection.getActiveCategories(),function(categoryId) {
+				  return {
+				  			name: backboneTodo.dat.CategoriesCollection.findWhere({categoryId:categoryId}).get('title'),
+				  			id: categoryId
+				  		}
+				});
+
+
 
 	            this.collection.create(new backboneTodo.Models.TodoModel({
 	                title: title,
-	                categories: backboneTodo.dat.CategoriesCollection.getActiveCategories()
+	                categories: categories
 	            }));
 
 	            $('#new-todo').val('');

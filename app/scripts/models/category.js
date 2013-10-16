@@ -10,7 +10,7 @@ backboneTodo.Models = backboneTodo.Models || {};
     	defaults: {
 	        title: '',
 	        selected: false,
-	        categoryIds: 0
+	        categoryId: 0
 	        
 	    },
 
