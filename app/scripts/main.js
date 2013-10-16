@@ -15,6 +15,12 @@ window.backboneTodo = {
             collection: backboneTodo.dat.CategoriesCollection
         });
 
+        backboneTodo.dat = backboneTodo.dat || {};
+        backboneTodo.dat.FiltersCollection = new this.Collections.FiltersCollection();
+        backboneTodo.dat.FiltersView = new this.Views.FiltersView({
+            collection: backboneTodo.dat.FiltersCollection
+        });
+
 
         backboneTodo.dat.TodosCollection = new this.Collections.TodosCollection();
         backboneTodo.dat.TodosView = new this.Views.TodosView({

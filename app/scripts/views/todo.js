@@ -14,10 +14,10 @@ backboneTodo.Views = backboneTodo.Views || {};
 	    events: {
 	        'click input[type="checkbox"]': 'toggle',
 	        'dblclick': 'toggleEdit',
-	        'click form span.icon-remove': 'removeTodo',
+	        'click span.icon-trash': 'removeTodo',
 	        'submit form': 'toggleEdit',
 	        'click ul.todo-categories-edit li': 'removeCategory',
-	        'blur input[type="text"]': 'toggleEdit'
+	        //'blur input[type="text"]': 'toggleEdit'
 	    },
 
 	    initialize: function () {
@@ -38,7 +38,6 @@ backboneTodo.Views = backboneTodo.Views || {};
 	        var input = this.$('form input');
 	        var title = input.val().trim();
 
-	        debugger;
 	        if (!title) {
 	            this.removeTodo();
 	            return;
@@ -63,15 +62,14 @@ backboneTodo.Views = backboneTodo.Views || {};
 	    },
 
 	    removeCategory: function(e){
-	    	debugger;
 	    	_.each(this.model.get('categories'), function(category, index){
-	    		if (category.id === this.$(e.target).data('id')){
+	    		if (category.id === this.$(e.currentTarget).data('id')){
 	    			this.model.get('categories').splice(index,1);
 	    		}
 	    	},this);
 
 	    	this.model.save();
-
+	    	this.toggleEdit();
 	    	this.render();
 	    },
 

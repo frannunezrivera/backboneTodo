@@ -43,8 +43,6 @@ backboneTodo.Views = backboneTodo.Views || {};
 				  		}
 				});
 
-
-
 	            this.collection.create(new backboneTodo.Models.TodoModel({
 	                title: title,
 	                categories: categories
@@ -68,7 +66,6 @@ backboneTodo.Views = backboneTodo.Views || {};
 	        	this.collection.fetch();
 	        }
 	    }
-
     });
 
 })();

@@ -55,9 +55,34 @@ input:checked ~ span {
     text-decoration: line-through;
 }
 
-#todo-app {
+#todo-app,
+#filters {
     margin: 0 auto;
     width: 290px;
+    font-size: 0.8em;
+}
+
+#filterby {
+    display: inline-block;
+
+    li {
+        display: inline-block;
+        margin: 10px 15px;
+
+    }
+}
+
+ul.todos > li {
+    border: 1px solid #CCC;
+    padding: 4px;
+    margin: 4px;
+    font-size: 0.8em;
+    background: white;
+
+    span.icon-trash {
+        position: relative;
+        left: 284px;
+    }
 }
 
 ul#categories {   
@@ -76,10 +101,10 @@ ul#categories {
 ul.todo-categories-edit {
     width: 100%;
     li {
-        margin: 2% 0% 0% 6%;
+        margin: 2% 0% 0% 0%;
         padding: inherit;
         text-align: center;
-        font-size: .9em;
+        font-size: 1em;
         span.icon-remove {
             display: inline-block;
             float: right;
@@ -90,7 +115,7 @@ ul.todo-categories-edit {
 }
 
 ul.todo-categories {
-    width: 100px;
+    width: 112px;
     height: 20px;
     float: right;
     li {

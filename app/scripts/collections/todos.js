@@ -26,6 +26,22 @@ backboneTodo.Collections = backboneTodo.Collections || {};
 
 	        return filtered;
 	    },
+
+        filterByDone: function() {
+            var filtered = this.filter(function(todo) {
+                return todo.get('completed'); 
+            });
+
+            return filtered;
+        },
+
+        filterByToDo: function() {
+            var filtered = this.filter(function(todo) {
+                return !todo.get('completed'); 
+            });
+
+            return filtered;
+        },
     });
 
 })();
