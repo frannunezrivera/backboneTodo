@@ -14,7 +14,7 @@ backboneTodo.Views = backboneTodo.Views || {};
 	    events: {
 	        'click input[type="checkbox"]': 'toggle',
 	        'dblclick': 'toggleEdit',
-	        'click span.icon-trash': 'removeTodo',
+	        'click span.icon-trash': 'deleteItem',
 	        'submit form': 'toggleEdit',
 	        'click ul.todo-categories-edit li': 'removeCategory',
 	        //'blur input[type="text"]': 'toggleEdit'
@@ -22,9 +22,15 @@ backboneTodo.Views = backboneTodo.Views || {};
 
 	    initialize: function () {
 	        this.listenTo(this.model, 'change', this.render);
+	        this.listenTo(this.model, 'destroy', this.removeTodo);
 	    },
 
 	    render: function () {
+
+	    	if (backboneTodo.dat.TodosView){
+	    		backboneTodo.dat.TodosView.renderStats();
+	    	}
+
 	        this.$el.html(this.template(this.model.toJSON()));
 
 	        return this;
@@ -73,10 +79,15 @@ backboneTodo.Views = backboneTodo.Views || {};
 	    	this.render();
 	    },
 
-	    removeTodo: function(){
+	    deleteItem: function(){
 	    	this.model.destroy();
+	    },
+
+	    removeTodo: function(){
 	        this.remove();
+	        backboneTodo.dat.TodosCollection.fetch();
 	        this.render();
+	        
 	    }
 
     });

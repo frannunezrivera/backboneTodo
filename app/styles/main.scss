@@ -146,6 +146,7 @@ ul.todo-categories {
 
 .category-Personal{
     background-color: $personalColor;
+    &:hover,
     &.active {
         background-color: $personalColorActive;
     }
@@ -153,6 +154,7 @@ ul.todo-categories {
 
 .category-Work{
     background-color: $workColor;
+    &:hover,
     &.active {
         background-color: $workColorActive;
     }
@@ -160,6 +162,7 @@ ul.todo-categories {
 
 .category-Shopping{
     background-color: $shoppingColor;
+    &:hover,
     &.active {
         background-color: $shoppingColorActive;
     }
@@ -167,7 +170,23 @@ ul.todo-categories {
 
 .category-Important{
     background-color: $importantColor;
+    &:hover,
     &.active {
         background-color: $importantColorActive;
+    }
+}
+
+#removeDone {
+    width: 40%;
+    padding: 6px;
+    background: #6D6D6D;
+    color: #E2E2E2;
+}
+
+#counters {
+    width: 40%;
+    float: right;
+    li{
+        display: inline-block;
     }
 }
